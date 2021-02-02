@@ -1,0 +1,50 @@
+#실전문제2. 미로탈출
+
+#BFS를 이용하여 가장 가까운 노드를 탐색함.
+#상하좌우 중 방문하지 않은 노드이면 좌표를 QUEUE에 삽입.
+#현재 노드는 이전 노드까지의 거리 + 1로 거리를 누적 계산.
+#queue가 빌때까지 반복 계산.
+
+from collections import deque
+
+n, m = map(int, input().split())
+
+graph = []
+for i in range(n):
+  graph.append(list(map(int,input())))
+
+#상, 하, 좌, 우 이동
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def bfs(x,y):
+  queue = deque()
+
+  queue.append((x,y))
+
+  while queue:
+    x, y = queue.popleft()
+
+    for i in range(4): #4방 조사
+      nx = x + dx[i]
+      ny = y + dy[i]
+
+      if nx < 0 or nx >= n or ny < 0 or ny >= m:
+        #맵을 벗어나면 다른 방향 조사
+        continue
+
+      if graph[nx][ny] == 0 :
+        #괴물 있으면 다른 방향 조사
+        continue
+      
+      if graph[nx][ny] == 1:
+        # 최초방문하는 곳이면 최단거리 기록. queue에 삽입
+        # 거리 + 1(최초 값은 1이므로 최초 거리는 1)
+        graph[nx][ny] = graph[x][y] + 1
+        queue.append((nx, ny))
+
+
+  return graph[n-1][m-1] #배열 오른쪽 맨 아래 값 반환 
+
+
+print(bfs(0,0))
