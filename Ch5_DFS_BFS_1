@@ -1,0 +1,39 @@
+#실전문제1. 음료수 얼려 먹기
+
+#상하좌우까지 방문해가면서 셀 값이 0인동안 계속 방문
+#상하좌우 모두 1이면 break, count + 1
+
+n, m = map(int, input().split())
+
+#맵정보 입력 (2차원배열)
+graph = []
+for i in range(n):
+  graph.append(list(map(int, input())))
+
+
+def dfs(x,y):
+  if x < 0 or x >= n or y < 0 or y >= m:
+    return False #맵 벗어날 경우 바로 탈출
+
+  if graph[x][y] == 0: #방문하지 않은 곳.
+    graph[x][y] = 1 #방문처리
+    #연결된 상하좌우를 방문처리함으로써
+    #한 곳을 방문하면 연결된 모든 곳이 방문되도록 처리.
+    dfs(x-1, y) #연결된 상하좌우 방문처리
+    dfs(x+1, y) #연결된 상하좌우 방문처리
+    dfs(x, y-1) #연결된 상하좌우 방문처리
+    dfs(x, y+1) #연결된 상하좌우 방문처리
+    
+    return True
+  
+  return False #방문한 곳은 false 반환
+
+#모든 위치에 음료 채우기
+result = 0
+for i in range(n):
+  for j in range(m):
+    if dfs(i,j) == True:
+      result += 1
+
+
+print(result)
