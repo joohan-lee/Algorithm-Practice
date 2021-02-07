@@ -1,0 +1,55 @@
+
+def upToDown():
+  n = int(input())
+
+  arr = []
+  for i in range(n):
+    arr.append(int(input()))
+
+
+  arr = sorted(arr, reverse=True)
+
+
+  for j in range(n):
+    print(arr[j], end = ' ')
+
+
+#####################################################################
+
+def downToUp_Score():
+  n = int(input())
+
+  stu_list = []
+
+  for i in range(n):
+    arr = input().split()
+    arr[1] = int(arr[1])
+    stu_list.append(arr)
+
+  stu_list = sorted(stu_list, key = lambda stu: stu[1])
+
+  for j in range(n):
+    print(stu_list[j][0], end = ' ')
+
+
+#####################################################################
+
+def changeElement():
+  n, k = map(int, input().split())
+
+  a = list(map(int, input().split()))
+  b = list(map(int, input().split()))
+
+  a = sorted(a)
+  b = sorted(b) #내림차순 정렬하면 아래에서 끝부터 비교할 필요 없음
+
+  for i in range(k):
+    if a[i] < b[len(b)-i-1]:
+      a[i], b[len(b)-i-1] = b[len(b)-i-1], a[i]
+
+  result = 0
+  for j in range(len(a)):
+    result += a[j]
+
+  print(result)
+  print(sum(a)) #sum함수 쓰면 for문 돌릴필요 없음
