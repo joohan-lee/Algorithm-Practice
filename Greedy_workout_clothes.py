@@ -14,6 +14,8 @@ def solution(n, lost, reserve):
     answer = n - len(lost) + rental        
     return answer
   
+#1개 테스트 틀린이유는 하기와 같이 추정.
+#=> lost : [1,2,3,3] / reserve : [3,4] 같이 학생에 중복된 넘버가 있으면 처리를 못함.
   
   ###################################################
     
@@ -34,3 +36,4 @@ def solution(n, lost, reserve):
     answer = n - len(set_lost)
     
     return answer
+ 
