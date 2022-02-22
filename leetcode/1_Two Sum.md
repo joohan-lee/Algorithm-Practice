@@ -3,7 +3,7 @@
 Acceptance: 0.483
 Difficulty: Easy
 Frequency: 1
-Skills: Hash Table, array
+Skills: Hash Table, array, Two Points
 Solved: February 21, 2022
 
 # Description
@@ -42,8 +42,8 @@ Output: [0,1]
 **Constraints:**
 
 - `2 <= nums.length <= 104`
-- `109 <= nums[i] <= 109`
-- `109 <= target <= 109`
+- `109 <= nums[i] <= 109`
+- `109 <= target <= 109`
 - **Only one valid answer exists.**
 
 # Solutions
@@ -75,8 +75,7 @@ class Solution:
 ```
 
 > Runtime: **64 ms**
-Memory Usage: **15.2 MB**
-> 
+> Memory Usage: **15.2 MB**
 
 ### Complexity Analysis
 
@@ -85,10 +84,32 @@ Memory Usage: **15.2 MB**
 
 # Base Idea (One line)
 
-Hash Table을 이용하여 O(1)으로 complement를 찾을 수 있는가 
+1. Hash Table을 이용하여 O(1)으로 complement를 찾을 수 있는가
+2. Two pointers with Time: O(n) / Space: O(1)
 
 # Explanation
 
 [Reference]
 
 [Two Sum - LeetCode](https://leetcode.com/problems/two-sum/solution/)
+
+### Solution 3. Using Two Points
+
+```Python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        #two points
+        nums_idx = [(v, idx) for idx, v in enumerate(nums)]
+        nums_idx.sort()
+
+        start = 0
+        end = len(nums) - 1
+        while start < end:
+            cur = nums_idx[start][0] + nums_idx[end][0]
+            if cur == target:
+                return [nums_idx[start][1], nums_idx[end][1]]
+            elif cur <target:
+                start += 1
+            else:
+                end -= 1
+```
