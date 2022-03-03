@@ -55,7 +55,13 @@ class Solution:
 
 > Time Limit Exceeded. Brute Force는 불가.
 
+recurrence formula:
+
+- when i is included in the optimal solution, $OPT(i) = v_i - min(v_k) \text{ for k in 1,...,i-1}$
+- when i is not included in the opt. sol., $OPT(i) = OPT(i-1)$
+
 ```python
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         min_price = float('inf')
@@ -78,7 +84,8 @@ class Solution:
 
 # Base Idea (One line)
 
-1. 우리의 관심사인 Max profit을 가지고 업데이트해주는 것이 중요.
+1. bottom up DP
+   (우리의 관심사인 Max profit(=OPT)을 가지고 업데이트해주는 것이 중요.)
 
 # Explanation
 
