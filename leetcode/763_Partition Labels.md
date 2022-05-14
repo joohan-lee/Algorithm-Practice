@@ -48,7 +48,7 @@ class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         last_idx = {c: i for i, c in enumerate(s)}
         end = anchor = 0
-        
+
         ret = []
         for i, c in enumerate(s):
             # update the last index of current part
@@ -56,19 +56,18 @@ class Solution:
             if i == end:
                 ret.append(i - anchor +1)
                 anchor = i+1
-        
+
         return ret
 ```
 
 > Runtime: 50 ms, faster than 65.49% of Python3 online submissions for Partition Labels.
-Memory Usage: 13.9 MB, less than 21.17% of Python3 online submissions for Partition Labels.
-> 
+> Memory Usage: 13.9 MB, less than 21.17% of Python3 online submissions for Partition Labels.
 
 ### Complexity Analysis
 
 - Time complexity : O(n), where n is the length of string
 - Space complexity : ~~O(n) to store last indices of each character~~
-- **Space complexity: ** <Caution!> Here the alphabet is at most 26, so we can actually say that space complexity is **O(1)**.
+- **Space complexity:** <Caution!> Here the alphabet is at most 26, so we can actually say that space complexity is **O(1)**.
 
 # Base Idea (One line)
 
