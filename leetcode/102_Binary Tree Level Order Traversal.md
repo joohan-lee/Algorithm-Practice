@@ -45,6 +45,8 @@ Output: []
 
 ### Python
 
+Iterative
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -82,9 +84,53 @@ Memory Usage: **14.2 MB(52.73%)**
 - Time complexity : O(n)
 - Space complexity : O(n)
 
+### Python
+
+Recursive
+
+```python
+from collections import deque
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        levels = []
+        level = 0
+        if root == None:
+            return []
+        
+        def bfs(cur, level):
+            if len(levels) == level:
+                levels.append([])
+            levels[level].append(cur.val)
+                
+            if cur.left:
+                bfs(cur.left, level + 1)
+            if cur.right:
+                bfs(cur.right, level + 1)
+        
+        bfs(root,level)
+        
+        return levels
+```
+
+> Runtime: 79 ms, faster than 5.10% of Python3 online submissions for Binary Tree Level Order Traversal.
+Memory Usage: 15 MB, less than 9.24% of Python3 online submissions for Binary Tree Level Order Traversal.
+> 
+
+### Complexity Analysis
+
+- Time complexity : O(n)
+- Space complexity : O(n)
+
 # Base Idea (One line)
 
 1. BFS using queue
+2. BFS recursively without queue
 
 # Explanation
 
