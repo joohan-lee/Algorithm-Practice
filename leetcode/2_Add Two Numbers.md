@@ -3,6 +3,7 @@
 Acceptance: 38.8%
 Difficulty: Medium
 Frequency: 94.01%
+Skills: Linked List, Math, Recursion
 Solved: May 30, 2022
 
 # Description
