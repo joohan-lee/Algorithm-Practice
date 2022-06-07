@@ -92,7 +92,7 @@ Memory Usage: 14 MB, less than 17.63% of Python3 online submissions for Swap Nod
 
 # Base Idea (One line)
 
-1. Make sure each node points to which node. (Recommend to draw them visually.)
+1. Make sure each node points to the proper node while swapping. (Recommend to draw them visually.)
 
 # Explanation
 
