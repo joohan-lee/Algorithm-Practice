@@ -75,7 +75,7 @@ class Solution:
 
 # Base Idea (One line)
 
-1. Backtracking
+1. Backtracking. Swap each element repeatedly.
 
 # Explanation
 
