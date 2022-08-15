@@ -86,11 +86,31 @@ Memory Usage: 30.3 MB, less than 43.41% of Python3 online submissions for Palind
 ### 2. Backtracking with DP
 
 ```python
-
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+                
+        def dfs(start, s, currentList):
+            if start >= len(s):
+                return result.append(list(currentList))
+            
+            for end in range(start, len(s)):
+                substr = s[start:end+1]
+                if (s[start] == s[end] and (end - start <=2 or dp[start+1][end-1])):
+                    currentList.append(substr)
+                    dp[start][end] = True
+                    dfs(end + 1, s, currentList)
+                    currentList.pop()
+                    
+            
+        n = len(s)
+        result = []
+        dp = [[False] * n for _ in range(n)]
+        dfs(0, s, [])
+        return result
 ```
 
-> Runtime: 
-Memory Usage:
+> Runtime: 756 ms, faster than 80.27% of Python3 online submissions for Palindrome Partitioning.
+Memory Usage: 30.4 MB, less than 43.41% of Python3 online submissions for Palindrome Partitioning.
 > 
 
 ### Complexity Analysis
@@ -100,8 +120,11 @@ Memory Usage:
 
 # Base Idea (One line)
 
-1. 
+1. Check all possible substrings with backtracking.
+2. While checking substring is a palindrome or not, there are overlapping subproblems, so use DP.
 
 # Explanation
 
 [Reference]
+
+[Palindrome Partitioning - LeetCode](https://leetcode.com/problems/palindrome-partitioning/solution/)
